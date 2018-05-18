@@ -1,0 +1,84 @@
+.LoginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.CenterСontainer {
+    background-color: white;
+    height: 270px;
+    width: 300px;
+    border: 1px solid black;
+    padding: 40px;
+
+    font-size: 22px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.UnderСontainer {
+    height: 70px;
+    width: 300px;
+    /*border: 1px solid black;*/
+    padding: 0 10px;
+
+    font-size: 12px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.FormСontainer {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    font-size: 12px;
+    /*border: 1px solid red;*/
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ButtonСontainer {
+    display: flex;
+    width: 100%;
+    /*border: 1px solid blue;*/
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.ButtonLogin {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+}
+
+.ButtonReg {
+    background-color: #707070;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+}
+
+.Input {
+    width: 100%;
+    height: 25px;
+}
+
+.Separate {
+    height: 20px;
+}
