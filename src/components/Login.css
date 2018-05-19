@@ -5,9 +5,24 @@
     justify-content: center;
     height: 100vh;
 }
-.CenterСontainer {
+.CenterСontainerLogin {
     background-color: white;
     height: 270px;
+    width: 300px;
+    border: 1px solid black;
+    padding: 40px;
+
+    font-size: 22px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.CenterСontainerReg {
+    background-color: white;
+    height: 340px;
     width: 300px;
     border: 1px solid black;
     padding: 40px;

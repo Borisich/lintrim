@@ -3,8 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import Login from  './components/Login';
 import Main from  './components/Main';
+import MainLogin from  './components/MainLogin';
 import Module1 from  './components/Module1';
 import Module2 from  './components/Module2';
+import { GlobalHistory } from './utils/history';
 
 import {
     BrowserRouter as Router,
@@ -18,7 +20,8 @@ class App extends Component {
     return (
         <Router>
             <div className="App">
-                <Route exact path="/" component={Login}/>
+                <GlobalHistory />
+                <Route path="/" component={MainLogin}/>
                 <Route path="/main" component={Main}/>
             </div>
         </Router>

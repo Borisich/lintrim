@@ -5,40 +5,55 @@ import {
 } from 'react-router-dom'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import './Login.css';
+import BackendApi from '../utils/BackendAPI';
+import getHistory from '../utils/history';
 
-const Button1 = withRouter(({ title, className, to, history }) => (
-    <button
-        className={className}
-        type='button'
-        onClick={() => { console.log(to); history.push(to) }}
-    >
-        {title}
-    </button>
-))
+class Login extends React.Component {
 
-const Login = () => (
-    <div className="LoginContainer">
-        <div className="CenterСontainer">
-            Вход
-            <div className="FormСontainer">
-                Email
-                <input className="Input" type="text"/>
-                <div className="Separate"/>
+    render(){
+        return(
+            <div>
+                <div className="CenterСontainerLogin">
+                    Вход
+                    <div className="FormСontainer">
+                        Email
+                        <input className="Input" type="text"/>
+                        <div className="Separate"/>
 
-                Пароль (Забыли?)
-                <input className="Input" type="password"/>
-                <div className="Separate"/>
-                <div className="ButtonСontainer">
-                    <Button1 title='Войти' className={"ButtonLogin"} to={'/main'}/>
+                        Пароль (Забыли?)
+                        <input className="Input" type="password"/>
+                        <div className="Separate"/>
+                        <div className="ButtonСontainer">
+                            <button className={'ButtonLogin'}
+                                    type='button'
+                                    onClick={this.__onLogin}
+                            >
+                                Войти
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div className="UnderСontainer">
-            Еще не зарегистрированы?
-            <Button1 title='Регистрация' className={"ButtonReg"} to={'/main'}/>
-        </div>
+                <div className="UnderСontainer">
+                    Еще не зарегистрированы?
+                    <button className={'ButtonReg'}
+                        type='button'
+                        onClick={this.__onReg}
+                    >
+                        Регистрация
+                    </button>
+                </div>
 
-    </div>
-);
+            </div>
+        );
+    }
+
+    __onReg = () => {
+        getHistory().push('/reg');
+    };
+
+    __onLogin = () => {
+        BackendApi.getUsers();
+    }
+}
 
 export default Login
