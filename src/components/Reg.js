@@ -8,6 +8,8 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import './Login.css';
 import BackendApi from '../utils/BackendAPI';
 import getHistory from '../utils/history';
+import { UsersController } from '../models/User';
+import { SecurityController } from '../models/Security';
 
 
 class Reg extends React.Component {
@@ -32,7 +34,6 @@ class Reg extends React.Component {
                             className="Input"
                             type="text"
                             onChange={(event) => {
-                                console.log(event.target.value);
                                 this.setState({
                                     email: event.target.value
                                 })
@@ -93,10 +94,18 @@ class Reg extends React.Component {
     }
 
     __onReg = () => {
-        if (this.state.psw !== this.state.psw2) {
-
+        if (this.state.psw !== this.state.psw2 || this.state.email.length === 0) {
+            alert('Поля заполнены не верно!');
         }
-        //BackendApi.getUsers();
+        else {
+            SecurityController.store.dispatch(SecurityController.register(this.state.email, this.state.psw)).then(res => {
+                if (res) {
+                    getHistory().push('/main');
+                } else {
+                    alert ('error');
+                }
+            });
+        }
     };
 
     __onLogin = () => {

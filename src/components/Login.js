@@ -8,7 +8,17 @@ import './Login.css';
 import BackendApi from '../utils/BackendAPI';
 import getHistory from '../utils/history';
 
+import { UsersController } from '../models/User';
+import { SecurityController } from '../models/Security';
+
 class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            psw: '',
+        };
+    }
 
     render(){
         return(
@@ -17,11 +27,29 @@ class Login extends React.Component {
                     Вход
                     <div className="FormСontainer">
                         Email
-                        <input className="Input" type="text"/>
+                        <input
+                            className="Input"
+                            type="text"
+                            onChange={(event) => {
+                                this.setState({
+                                    email: event.target.value
+                                })
+                            }}
+                            value={this.state.email}
+                        />
                         <div className="Separate"/>
 
                         Пароль (Забыли?)
-                        <input className="Input" type="password"/>
+                        <input
+                            className="Input"
+                            type="password"
+                            onChange={(event) => {
+                                this.setState({
+                                    psw: event.target.value
+                                })
+                            }}
+                            value={this.state.psw}
+                        />
                         <div className="Separate"/>
                         <div className="ButtonСontainer">
                             <button className={'ButtonLogin'}
@@ -52,7 +80,13 @@ class Login extends React.Component {
     };
 
     __onLogin = () => {
-        BackendApi.getUsers();
+        SecurityController.store.dispatch(SecurityController.login(this.state.email, this.state.psw)).then(res => {
+            if (res) {
+                getHistory().push('/main');
+            } else {
+                alert ('error');
+            }
+        });
     }
 }
 

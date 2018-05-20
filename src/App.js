@@ -21,8 +21,8 @@ class App extends Component {
         <Router>
             <div className="App">
                 <GlobalHistory />
-                <Route path="/" component={MainLogin}/>
                 <Route path="/main" component={Main}/>
+                <Route path="/" component={MainLogin}/>
             </div>
         </Router>
 
