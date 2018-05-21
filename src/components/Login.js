@@ -1,14 +1,8 @@
 import React from 'react';
-import {
-    Link,
-    withRouter
-} from 'react-router-dom'
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
 import './Login.css';
-import BackendApi from '../utils/BackendAPI';
 import getHistory from '../utils/history';
 
-import { UsersController } from '../models/User';
 import { SecurityController } from '../models/Security';
 
 class Login extends React.Component {
@@ -76,13 +70,13 @@ class Login extends React.Component {
     }
 
     __onReg = () => {
-        getHistory().push('/reg');
+        getHistory().push('login/reg');
     };
 
     __onLogin = () => {
         SecurityController.store.dispatch(SecurityController.login(this.state.email, this.state.psw)).then(res => {
             if (res) {
-                getHistory().push('/main');
+                getHistory().push('/');
             } else {
                 alert ('error');
             }

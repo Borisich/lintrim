@@ -14,12 +14,13 @@ const Main = ({ match }) => (
     <div>
         <h2>Main</h2>
 
-        <li><Link to="/">Back to login page</Link></li>
-        <li><Link to="/main/module1">module1</Link></li>
-        <li><Link to={`${match.url}/module2`}>module2</Link></li>
+        <li><Link to="/login">Back to login page</Link></li>
+        <li><Link to={`${match.url}module1`}>module1</Link></li>
+        <li><Link to={`${match.url}module2`}>module2</Link></li>
 
         <button
             onClick={() => {
+                console.log(match);
                 UsersController.store.dispatch(UsersController.loadUsers()).then(res => {
                     alert(res)
                 });
@@ -27,10 +28,10 @@ const Main = ({ match }) => (
         >
             Загрузить пользователей
         </button>
-        <Route path={`${match.url}/module1`} component={Module1}/>
-        <Route path={`${match.url}/module2`} component={Module2}/>
+        <Route path={`${match.url}module1`} component={Module1}/>
+        <Route path={`${match.url}module2`} component={Module2}/>
     </div>
 )
 
 
-export default Main
+export default Main;

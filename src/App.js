@@ -7,6 +7,8 @@ import MainLogin from  './components/MainLogin';
 import Module1 from  './components/Module1';
 import Module2 from  './components/Module2';
 import { GlobalHistory } from './utils/history';
+import requireAuth from './components/CheckAuth';
+import { SecurityController } from './models/Security';
 
 import {
     BrowserRouter as Router,
@@ -21,8 +23,8 @@ class App extends Component {
         <Router>
             <div className="App">
                 <GlobalHistory />
-                <Route path="/main" component={Main}/>
-                <Route path="/" component={MainLogin}/>
+                <Route path="/login" component={MainLogin}/>
+                <Route path="/" component={requireAuth(Main)}/>
             </div>
         </Router>
 

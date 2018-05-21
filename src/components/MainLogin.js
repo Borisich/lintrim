@@ -11,7 +11,7 @@ import Reg from './Reg';
 const MainLogin = ({ match }) => (
     <div className="LoginContainer">
         <Route exact path={`${match.url}`} component={Login}/>
-        <Route path={`${match.url}reg`} component={Reg}/>
+        <Route path={`${match.url}/reg`} component={Reg}/>
     </div>
 )
 
